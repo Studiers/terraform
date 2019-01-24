@@ -8,5 +8,6 @@
 # .tfvars files
 *.tfvars
 
-# save my accounts
+# save my security
 accounts
+keys
