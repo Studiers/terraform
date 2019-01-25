@@ -1,5 +1,5 @@
 provider "google" {
-  credentials = "../accounts/i-like-dsmproject-9ae17eb886e7.json"
+  credentials = "${file(var.google_credentials_path)}"
 }
 
 
@@ -25,5 +25,17 @@ resource "google_compute_instance" "my-instance" {
 
   metadata {
     sshKeys = "ubuntu:${file(var.ssh_public_key_filepath)}"
+  }
+  
+  provisioner "local-exec" {
+    command = "echo first"
+  }
+
+  provisioner "local-exec" {
+    command = "echo second >> test"
+  }
+
+  provisioner "local-exec" {
+    command = "cat test"
   }
 }
